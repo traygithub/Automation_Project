@@ -24,3 +24,7 @@ if [[ ! -f ${docroot}/inventory.html ]]; then
 size=$(du -h /tmp/${name}-httpd-logs-${timestamp}.tar | awk '{print $1}')
 echo -e "httpd-logs\t-\t${timestamp}\t\ttar\t-\t${size}" >> ${docroot}/inventory.html
 fi
+
+if [[ ! -f /etc/cron.d/automation ]];then
+echo "* * * * * root /root/Automation_Project/automation.sh" >> /etc/cron.d/automation
+fi
